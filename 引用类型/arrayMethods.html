@@ -51,7 +51,25 @@
    var bool = d.some((item,index,array)=> {
      return item > 10;
    })
-   console.log(bool,'d')
+   var bools = d.every((item,index,array)=> {
+     return item > 10;
+   })
+   console.log(bool,'d');  // true 
+   console.log(bools,'d');  // false 
+
+
+   // 7 归并方法  reduce（）  reduceRight()；
+   /*
+    reduce()和 reduceRight()的函数接收 4 个参数:  前一个值、当前值、项的索引和数组对象。
+    这 个函数返回的任何值都会作为第一个参数自动传给下一项。第一次迭代发生在数组的第二项上，
+    因此第 一个参数是数组的第一项，第二个参数就是数组的第二项。
+   */
+  var e = [1,2,3,4,5];
+  var sum = e.reduce((prev,cur,index,array)=> {
+    return prev + cur;
+  })
+   // 第一次执行回调函数，prev 是 1，cur 是 2。第二次，prev 是 3(1 加 2 的结果)，cur 是 3(数组 的第三项)。这个过程会持续到把数组中的每一项都访问一遍，最后返回结果； reduceRight()  则是从最后一项开始执行；
+  console.log(sum,'e')
 
 
     
