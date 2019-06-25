@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div>表单验证</div>
+  <button onclick="submitData()">提交</button>
+  <script>
+    let iphone = /^1[3456789]\d{9}$/;
+    let email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    let number = /^[0-9]+$/;
+    let idCard = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+    let arrWorlds = ['','手机号','文本','邮箱','数字','日期','时间','身份证号'];
+    let datas = [
+      {value:'18302867820',fieldFormat:1},
+      {value:'102450599',fieldFormat:3},
+      {value:'121',fieldFormat:4},
+      {value:'510902198712118931',fieldFormat:7},
+    ]
+    let obj = {
+      '1':iphone,
+      '3':email,
+      '4':number,
+      '7':idCard,
+
+    }
+    for ( let key in obj) {
+      // arrWorlds[key]
+    }
+    function valid (data,flag) {
+      for (let i =0;i < data.length;i++) {
+        let items = data[i];
+        if(items.fieldFormat == 1 && !iphone.test(items.value)) {
+          flag = 1;
+        } else if(items.fieldFormat == 3 && !email.test(items.value)) {
+          flag = 3;
+        }
+        else if(items.fieldFormat == 4 && !number.test(items.value)) {
+          flag = 4;
+        }
+        else if(items.fieldFormat == 7 && !idCard.test(items.value)) {
+          flag = 7;
+        }
+        
+      }
+      return flag;
+
+    };
+
+
+
+    function submitData() {
+      let flag = null
+
+      if(valid(datas,flag)) {
+        console.log(valid(datas,flag),'valid(datas)')
+
+      }else {
+        console.log('重新打印新的值')
+
+      }
+    };
+
+
+  
+  </script>
+</body>
+</html>

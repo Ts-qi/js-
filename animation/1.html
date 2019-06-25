@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/CSS">
+.firstDiv{ float:left; background:pink;}
+.firstDiv:hover{ cursor:pointer;}
+.noSelected{ -moz-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none;}
+.secondDiv{ background:gray; width:200px; height:400px; float:left; display:none; padding-top:30px; padding-left:30px;}
+</style>
+</head>
+<body>
+<div id="firstDiv" class="firstDiv"><span class="noSelected">鼠标滑动查看信息。</span></div>
+<div id="secondDiv" class="secondDiv">
+<p>qq:1900098</p>
+<p>tel:99998888</p>
+<p>user:xq</p>
+</div>
+<script type="text/JavaScript" src="./jquery-1.11.3.min.js"></script>
+<script type="text/EcScript">
+"use strict"
+class Animation{
+  constructor(ele) {
+    this.ele = ele;
+  }
+  show(){
+    $(this.element).css("display","block");
+  };
+  hide(){
+    $(this.element).css("display","none");
+  }
+}
+
+var divForChange=new Animation("#secondDiv");
+$("#firstDiv,#secondDiv").hover(
+  function(){
+    divForChange.show();
+  } ,
+  function(){
+    divForChange.hide();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>深拷贝</h1>
+  <script>
+  // 定义检测数据类型的方法
+  function checkedDataType(target) {
+    return Object.prototype.toString.call(target).slice(8,-1);
+ 
+  }
+  let data = [];
+  console.log(checkedDataType(data)) //array 
+  function deepClone (target) {
+    let result ;  // 初始化一个 result 数据，就是最终的克隆的数据
+    let targetType = checkedDataType(target);
+
+    if(targetType === 'Array') {
+      result = []
+    }else if(targetType === 'Object') {
+      result = {}
+    }else {
+      return result;
+    }
+
+
+  }
+  
+  </script>
+</body>
+</html>
