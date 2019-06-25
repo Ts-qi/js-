@@ -19,15 +19,31 @@
   function deepClone (target) {
     let result ;  // 初始化一个 result 数据，就是最终的克隆的数据
     let targetType = checkedDataType(target);
-
+    //判断类型 对 定义好的 result 赋值；
     if(targetType === 'Array') {
       result = []
     }else if(targetType === 'Object') {
       result = {}
     }else {
       return result;
+    };
+
+    //遍历传进来的 target 
+    for ( let key in target) {
+      let item = target[key];
+      let type = checkedDataType(item);
+      //判断对象里的每一个值是否存在对象 或者数组
+      if(type === "Object" || type === 'Array') {
+
+        result[key] = deepClone(item);
+
+      }else {
+        // 基本类型数据  或者 函数；
+        result[key] = item;
+      }
     }
 
+    return result;
 
   }
   
