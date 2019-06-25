@@ -16,6 +16,7 @@
   }
   let data = [];
   console.log(checkedDataType(data)) //array 
+  //深克隆 可以完全的克隆下来；
   function deepClone (target) {
     let result ;  // 初始化一个 result 数据，就是最终的克隆的数据
     let targetType = checkedDataType(target);
@@ -34,7 +35,8 @@
       let type = checkedDataType(item);
       //判断对象里的每一个值是否存在对象 或者数组
       if(type === "Object" || type === 'Array') {
-
+        //对象/数组里嵌套了对象/数组
+        //继续遍历获取到value值
         result[key] = deepClone(item);
 
       }else {
@@ -46,6 +48,37 @@
     return result;
 
   }
+  let a = [{
+    a:'1',
+    add: function(){},
+    undefined: undefined,
+    s: undefined,
+    b: false,
+    ss:null,
+    }
+  ];
+  let b = deepClone(a);
+  b[0].a = '9000'
+  console.log(a);
+  console.log(b);
+  console.log('深拷贝');
+  // Json.string() 和 JSON.Parse() 不能拷贝到 function 和 undefined
+  let c = {
+    name:'tangqi',
+    age: function() {
+      
+    },
+    height: '65kg',
+    s: undefined,
+    b: false,
+    ss:null,
+    as:8
+    
+  }
+  let d = JSON.parse(JSON.stringify(c))
+
+  console.log(c,'c');
+  console.log(d,'d');
   
   </script>
 </body>
