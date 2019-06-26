@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    函数
+  </div>
+  <script>
+     function createComFn (name) {
+       return function (targetObj,lastObj) {
+        let targetVal = targetObj[name];
+        let lastVal = lastObj[name];
+        if(targetVal < lastVal ) {
+          return -1
+        }else if(targetVal > lastVal) {
+          return 1
+        }else  {
+          return 0
+        }
+       }
+     }
+
+
+  
+  </script>
+</body>
+</html>

@@ -23,6 +23,12 @@
     这两种访问对象属性的方法没有任何区别。但方括号语法的主要优点是可以通过变量 来访问属性，例如:
     var propertyName = "name"; 
     alert(person[propertyName])
+  
+  3 for in   和 for  of 的区别
+
+    for（最原始的写法）、 forEach（ES5，但是它不支持使用break、continue和return语句）、for…of（ES6，循环数组的元素值）这三个是循环数组（对象数组）的；
+    for…in循环数组索引、对象的属性，但使用 for…in 原型链上的所有属性都将被访问，用 hasOwnProperty() 方法解决,只循环出自身的实例； 原型链上的不循环出来
+
   */
  var  id = "510902199212087391"
  untils.identityDateGetOfBirth(id)

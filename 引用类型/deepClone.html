@@ -48,6 +48,35 @@
     return result;
 
   }
+  
+  function deepClones ( target) {
+    //定义一个最终的数据
+    let result;
+    // 判断传进来的值的类型  d对定义的 result 进行赋值
+    let type = checkedDataType(target);
+
+    if( type === 'Object') {
+      result = {}
+    }else if( type === 'Array') {
+      result = []
+    }else {
+      return result;
+    }
+
+    //在对 target 进行一个遍历
+
+    for ( let i in target) {
+      let item = target[i];
+      let lastType = checkedDataType(item)
+      if( lastType === 'Object' || lastType === 'Array') {
+        result[i] = deepClones(item)
+      }else {
+         result[i] = item
+      } 
+    }
+
+    return result;
+  }
   let a = [{
     a:'1',
     add: function(){},
@@ -57,7 +86,7 @@
     ss:null,
     }
   ];
-  let b = deepClone(a);
+  let b = deepClones(a);
   b[0].a = '9000'
   console.log(a);
   console.log(b);

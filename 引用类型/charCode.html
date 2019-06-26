@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    排序字母
+  </div>
+  <script>
+      let elglishList = ['V','X','Y','Z','A','C','W','D','E','F','G','H','O','I','J',,'M','B','N','P','Q','R','S','K','L','T','U',]
+
+  
+      elglishList.sort()
+      // console.log(elglishList,'elglishList')
+
+      for ( let i of elglishList ) {
+        // console.log(elglishList[i])
+      }
+      var triangle = {a: 1, b: 2, c: 3};
+
+      function ColoredTriangle() {
+        this.color = 'red';
+      }
+
+      ColoredTriangle.prototype = triangle;
+
+      var obj = new ColoredTriangle();
+      console.log(obj,'obj')
+
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)){// 过滤其他属性； 只是关心自身的属性
+          console.log(`obj.${prop} = ${obj[prop]}`);
+        } 
+      }
+  </script>
+</body>
+</html>
