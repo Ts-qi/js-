@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>call  apply</h1>
+  <script>
+    const a = {
+      value :1
+    }
+    ;
+    function getValue(name,age) {
+      console.log(name)
+      console.log(age)
+      console.log(this.value)
+    }
+    getValue.call(a,'tangqi',22)
+  
+  console.log(a,'a')
+  /*
+    模拟实现 call  和 apply  都是为了解决改变 this 的指向
+  
+  */
+console.log('====================>分割线')
+var b = {
+  value:99999
+}
+  Function.prototype. myCall = function(context) {
+    //1 传入一个参数，如果莫有则默认this 指向 window；
+    var context = context || window;
+    //2 为了解决 this 的指向 ； 这里需要一个 改变this 指向的函数；
+    context.fn = this;
+    //3 改变了 this 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除？
+    var args = [...arguments].splice(1);//取出 context 后面传入的参数
+    // 得到最终的结果
+    var result = context.fn(...args)
+    delete context.fn;
+
+    return result;
+  }
+  
+  getValue.myCall(b,'tiven',29)
+
+  </script>
+</body>
+</html>
