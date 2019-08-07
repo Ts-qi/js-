@@ -9,6 +9,8 @@
 <body>
   <div>理解对象</div>
   <script>
+
+
         var triangle = {a: 1, b: 2, c: 3};
 
       function ColoredTriangle() {
@@ -21,10 +23,65 @@
       console.log(obj,'obj')
 
       for (var prop in obj) {
-        if (obj.hasOwnProperty(prop)){// 过滤其他属性； 只是关心自身的属性
+        if (obj.hasOwnProperty(prop)){// 过滤其他属性； 只是关心自身的属性  hasOwnProperty方法接收一个字符串参数，该参数表示属性名称，用来判断该属性是否在当前对象实例中，而不是在对象的原型链中
           console.log(`obj.${prop} = ${obj[prop]}`);
         } 
       }
+      // Object.defineProperty() 
+      const name = 'window'
+      const objs = {
+        name:'tangqi ',
+        getName: function() {
+          return function() {
+            return this.name;
+          }
+          
+        }
+      }
+
+      console.log(objs.getName()(),'obj.getName')
+
+      let  book = {
+        _year: 1992,
+        edtion: 1
+      }
+      Object.defineProperty(book,'_year',{
+        writable:false,//是否可以更改
+        configurable: false,//是否可以删除
+        enumerable: false,//是否能通过 for in  去循环返回属性
+      }, {
+        get:function() {
+          return this._year
+        },
+        set:function(newVal) {
+          if(newVal > 1992 ) {
+            this._year = newVal;
+            this.edtion += newVal - 1992
+          }
+        }
+      })
+
+      book._year = 2000;
+      delete book._year
+      console.log(book,'book.edtion');
+
+     
+      function add(a,b) {
+        return a+b
+      }
+      
+      
+      let ts= {}
+      let sa= add.call(this);
+       
+      console.log(window,'sssss')
+
+      for (let i= 0; i<10;i++){ 
+        setTimeout(()=>{
+          console.log(i);
+        }, 0)
+      }
+
   </script>
 </body>
 </html>

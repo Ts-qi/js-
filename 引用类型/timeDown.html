@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+    <title>原生js60s倒计时</title>
+    <style>
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="免费获取验证码" />
+<script type="text/javascript">
+          //发送验证码按钮的60s倒计时
+      var countdown = 60;
+      var mfbtn=document.getElementById('btn');
+      var mfbtn=document.getElementById('btn');
+      mfbtn.style.background='#0af';
+      mfbtn.style.border='none';
+      mfbtn.style.borderRadius='5px';
+      mfbtn.style.height='30px';
+      mfbtn.style.color='#fff';
+      function settime(obj) {
+        if (countdown == 0) {
+          obj.disabled=false;
+          obj.value="免费获取验证码";
+          countdown = 60;
+          return;
+      } else {
+        obj.disabled=true
+        obj.value="重新发送" + countdown
+        countdown--;
+        mfbtn.style.background='#999';
+      }
+        setTimeout(function() {
+            settime(obj);
+        }, 1000)
+      };
+
+      mfbtn.onclick=function () {
+              settime(mfbtn);
+      };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复制</title>
+</head>
+<body>
+
+  <a id="selector">复制链接，转发推广,wwwbaidu,com</a>
+  <button id="copy">点击复制</button>
+
+   <script>
+   var aEle = document.querySelector('#copy');
+   console.log(aEle,'as')
+	aEle.addEventListener('click',function(){
+		var copyDOM = document.querySelector('#selector');  
+  var range = document.createRange();  
+  range.selectNode(copyDOM);
+  window.getSelection().removeAllRanges();
+window.getSelection().addRange(range);
+var successful = document.execCommand('copy');  
+  try {  
+    
+    var msg = successful ? 'successful' : 'unsuccessful';  
+    console.log('Copy email command was ' + msg);  
+  } catch(err) {  
+    console.log('Oops, unable to copy');  
+  }
+ 
+  window.getSelection().removeAllRanges();  
+	},false);
+   
+   
+   </script>
+</body>
+</html>
