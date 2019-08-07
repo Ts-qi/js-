@@ -19,20 +19,22 @@
       console.log(this.value)
     }
     getValue.call(a,'tangqi',22)
+    getValue.apply(a,['tangqi',22])
   
-  console.log(a,'a')
+  // console.log(a,'a')
   /*
     模拟实现 call  和 apply  都是为了解决改变 this 的指向
   
   */
-console.log('====================>分割线')
+console.log('====================>分割线call')
 var b = {
   value:99999
 }
+// call 的实现
   Function.prototype. myCall = function(context) {
     //1 传入一个参数，如果莫有则默认this 指向 window；
     var context = context || window;
-    //2 为了解决 this 的指向 ； 这里需要一个 改变this 指向的函数；
+    //2 将调用的 this  赋值给参数的一个函数；
     context.fn = this;
     //3 改变了 this 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除？
     var args = [...arguments].splice(1);//取出 context 后面传入的参数
@@ -44,7 +46,27 @@ var b = {
   }
   
   getValue.myCall(b,'tiven',29)
+ console.log('================>分割线 apply')
 
+ var c = {
+   value:1000000000
+ }
+ Function.prototype.myApply = function(context) {
+   var context = context|| window;
+   context.fn = this;
+   var result;
+   // 判断是否有第二个参数，即传的值； 有就展开； 莫有就直接调用 
+   console.log(...arguments[1],'arsdssd')
+   if(arguments[1]) {
+     result = context.fn(...arguments[1]) 
+   }else {
+     result = context.fn()
+   }
+
+   delete context.fn();
+   return result;
+ }
+ getValue.myApply(c,['tom',99,'000'])
   </script>
 </body>
 </html>
